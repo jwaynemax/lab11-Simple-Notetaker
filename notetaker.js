@@ -17,6 +17,7 @@ function updatePageContent() {
     if (arrayOfNotes.length == 0) {
         document.getElementById("display-notes").classList.add('display-none');
         document.getElementById("delete-note").classList.add('display-none');
+        document.getElementById("validation").classList.add('display-none');
     } else {
         document.getElementById("display-notes").classList.remove('display-none');
         document.getElementById("delete-note").classList.remove('display-none');
@@ -33,13 +34,23 @@ function updatePageContent() {
 }
 
 function addNote() {
-    arrayOfNotes.push(document.getElementById("newnote").value);
-    document.getElementById("newnote").value = "";
-    updatePageContent();
+    if (document.getElementById("newnote").value == "") {
+        validation();
+    } else {
+        document.getElementById("validation").classList.add('display-none');
+        arrayOfNotes.push(document.getElementById("newnote").value);
+        document.getElementById("newnote").value = "";
+        updatePageContent();
+    }
 }
 
 function deleteNote() {
+    document.getElementById("validation").classList.add('display-none')
     let removeIndex = document.getElementById("noteselection").value;
     arrayOfNotes.splice(removeIndex, 1);
     updatePageContent();
+}
+
+function validation() {
+    document.getElementById("validation").classList.remove('display-none');
 }
