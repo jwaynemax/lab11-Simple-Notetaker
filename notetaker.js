@@ -6,18 +6,20 @@
  * - Removes notes selected by the user 
  */
 
-let arrayOfNotes = ["Justin", "Savannah", "Emily"];
+let arrayOfNotes = [];
+
+updatePageContent();
 
 document.getElementById("add").addEventListener("click", addNote);
 document.getElementById("delete").addEventListener("click", deleteNote);
 
 function updatePageContent() {
     if (arrayOfNotes.length == 0) {
-        document.getElementById("display-notes").classList.remove('display-notes');
-        document.getElementById("delete-note").classList.remove('delete-note');
+        document.getElementById("display-notes").classList.add('display-none');
+        document.getElementById("delete-note").classList.add('display-none');
     } else {
-        document.getElementById("display-notes").classList.add('display-notes');
-        document.getElementById("delete-note").classList.add('delete-note');
+        document.getElementById("display-notes").classList.remove('display-none');
+        document.getElementById("delete-note").classList.remove('display-none');
 
         let noteList = document.getElementById('notelist');
         let noteSelection = document.getElementById('noteselection');
@@ -37,6 +39,7 @@ function addNote() {
 }
 
 function deleteNote() {
-    arrayOfNotes.splice(document.getElementById("noteselection").value, 1);
+    let removeIndex = document.getElementById("noteselection").value;
+    arrayOfNotes.splice(removeIndex, 1);
     updatePageContent();
 }
