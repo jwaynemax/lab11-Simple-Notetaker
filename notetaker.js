@@ -8,7 +8,7 @@
 
 let arrayOfNotes = ["Justin", "Savannah", "Emily"];
 
-document.getElementById("add").addEventListener("click", updatePageContent);
+document.getElementById("add").addEventListener("click", addNote);
 
 function updatePageContent() {
     if (arrayOfNotes.length == 0) {
@@ -27,4 +27,10 @@ function updatePageContent() {
             noteSelection.innerHTML += "<option value=" + index + ">" + arrayOfNotes[index] + "</option>";
         }
     }
+}
+
+function addNote() {
+    arrayOfNotes.push(document.getElementById("newnote").value);
+    document.getElementById("newnote").value = "";
+    updatePageContent();
 }
