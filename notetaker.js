@@ -9,6 +9,7 @@
 let arrayOfNotes = ["Justin", "Savannah", "Emily"];
 
 document.getElementById("add").addEventListener("click", addNote);
+document.getElementById("delete").addEventListener("click", deleteNote);
 
 function updatePageContent() {
     if (arrayOfNotes.length == 0) {
@@ -32,5 +33,10 @@ function updatePageContent() {
 function addNote() {
     arrayOfNotes.push(document.getElementById("newnote").value);
     document.getElementById("newnote").value = "";
+    updatePageContent();
+}
+
+function deleteNote() {
+    arrayOfNotes.splice(document.getElementById("noteselection").value, 1);
     updatePageContent();
 }
