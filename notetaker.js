@@ -5,3 +5,26 @@
  * - Adds notes entered by the user
  * - Removes notes selected by the user 
  */
+
+let arrayOfNotes = ["Justin", "Savannah", "Emily"];
+
+document.getElementById("add").addEventListener("click", updatePageContent);
+
+function updatePageContent() {
+    if (arrayOfNotes.length == 0) {
+        document.getElementById("display-notes").classList.remove('display-notes');
+        document.getElementById("delete-note").classList.remove('delete-note');
+    } else {
+        document.getElementById("display-notes").classList.add('display-notes');
+        document.getElementById("delete-note").classList.add('delete-note');
+
+        let noteList = document.getElementById('notelist');
+        let noteSelection = document.getElementById('noteselection');
+        noteList.innerHTML = "";
+        noteSelection.innerHTML = "";
+        for (let index = 0; index < arrayOfNotes.length; index++) {
+            noteList.innerHTML += "<li>" + arrayOfNotes[index] + "</li>";
+            noteSelection.innerHTML += "<option value=" + index + ">" + arrayOfNotes[index] + "</option>";
+        }
+    }
+}
